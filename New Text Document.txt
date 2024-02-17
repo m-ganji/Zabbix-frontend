@@ -1,0 +1,412 @@
+import Box from "@mui/material/Box";
+import MuiDrawer from "@mui/material/Drawer";
+import MuiAppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import CssBaseline from "@mui/material/CssBaseline";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import jMoment from "moment-jalaali";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
+import ErrorIcon from "@mui/icons-material/Error";
+import StorageIcon from "@mui/icons-material/Storage";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import MapIcon from "@mui/icons-material/Map";
+import ScreenSearchDesktopIcon from "@mui/icons-material/ScreenSearchDesktop";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import DvrIcon from "@mui/icons-material/Dvr";
+import ReportIcon from "@mui/icons-material/Report";
+import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+import HelpIcon from "@mui/icons-material/Help";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import PublicIcon from "@mui/icons-material/Public";
+import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
+import DomainIcon from "@mui/icons-material/Domain";
+import CellTowerIcon from "@mui/icons-material/CellTower";
+import WorkspacesIcon from "@mui/icons-material/Workspaces";
+import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
+import HandymanIcon from '@mui/icons-material/Handyman';
+import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import WysiwygIcon from '@mui/icons-material/Wysiwyg';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
+import StarIcon from '@mui/icons-material/Star';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import GridViewIcon from '@mui/icons-material/GridView';
+import GrassIcon from '@mui/icons-material/Grass';
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
+import PermMediaIcon from '@mui/icons-material/PermMedia';
+import DescriptionIcon from '@mui/icons-material/Description';
+import CycloneIcon from '@mui/icons-material/Cyclone';
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import ApiIcon from '@mui/icons-material/Api';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+
+
+
+
+moment.locale("fa");
+jMoment.loadPersian();
+
+const drawerWidth = 240;
+
+const openedMixin = (theme) => ({
+  width: drawerWidth,
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: "hidden",
+});
+
+const closedMixin = (theme) => ({
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: "hidden",
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up("sm")]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  whiteSpace: "nowrap",
+  boxSizing: "border-box",
+  ...(open && {
+    ...openedMixin(theme),
+    "& .MuiDrawer-paper": openedMixin(theme),
+  }),
+  ...(!open && {
+    ...closedMixin(theme),
+    "& .MuiDrawer-paper": closedMixin(theme),
+  }),
+}));
+
+export default function DrawerCom({ btn, children }) {
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const [isFullScreen, setisFullScreen] = useState(false);
+  const [IsDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  const [DropDown, setDropDown] = useState([
+    {
+      title: "نظارت",
+      icon: <VisibilityIcon />,
+      opt: [
+        { href: "/main/", icon: <ErrorIcon />, title: "مشکل ها" },
+        { href: "/main/hosts", icon: <StorageIcon />, title: "هاست ها" },
+        { href: "/main/", icon: <DataObjectIcon />, title: "آخرین دیتا ها" },
+        { href: "/main/SysMaps", icon: <MapIcon />, title: "نقشه ها" },
+        { href: "/main/", icon: <ScreenSearchDesktopIcon />, title: "اکتشاف" },
+      ],
+      isOpen: false,
+    },
+    {
+      title: "خدمات",
+      icon: <SettingsSuggestIcon />,
+      opt: [
+        { href: "", icon: <HandymanIcon />, title: "خدمات" },
+        { href: "", icon: <ScatterPlotIcon />, title: "SLA" },
+        { href: "", icon: <AnalyticsIcon />, title: "گزارشات SLA" },
+      ],
+      isOpen: false,
+    },
+    {
+      title: "فهرست",
+      icon: <BrowserUpdatedIcon />,
+      opt: [
+        { href: "", icon: <RateReviewIcon />, title: "مرور" },
+        { href: "", icon: <StorageIcon />, title: "هاست ها" },
+      ],
+      isOpen: false,
+    },
+    {
+      title: "گزارشات",
+      icon: <ReportIcon />,
+      opt: [
+        { href: "", icon: <WysiwygIcon />, title: "اطلاعات سیستم" },
+        { href: "", icon: <BarChartIcon />, title: "گزارشات زمانبندی شده" },
+        { href: "", icon: <LibraryAddCheckIcon />, title: "گزارش های در دسترس" },
+        { href: "", icon: <StarIcon />, title: "فعال کردن 100 مورد برتر" },
+        { href: "", icon: <AccountBalanceIcon />, title: "گزارش حسابرسی" },
+        { href: "", icon: <NotificationsNoneIcon />, title: "اعلانات" },
+
+      ],
+      isOpen: false,
+    },
+    {
+      title: "دیتا",
+      icon: <DvrIcon />,
+      opt: [
+        { href: "", icon: <GridViewIcon />, title: "گروه های قالب" },
+        { href: "", icon: <GroupWorkIcon />, title: "گروه های هاست" },
+        { href: "", icon: <GrassIcon />, title: "قالب ها" },
+        { href: "", icon: <StorageIcon />, title: "هاست ها" },
+        { href: "", icon: <EngineeringIcon />, title: "نگهداری" },
+        { href: "", icon: <CalendarTodayIcon />, title: "همبستگی رویداد" },
+        { href: "", icon: <FindInPageIcon />, title: "کشف" },
+      ],
+      isOpen: false,
+    },
+    {
+      title: "اعلانات",
+      icon: <NotificationsNoneIcon />,
+      opt: [
+        { href: "", icon: <AdsClickIcon />, title: "اقدامات" },
+        { href: "", icon: <PermMediaIcon />, title: "انواع رسانه ها" },
+        { href: "", icon: <DescriptionIcon />, title: "اسکریپت ها" },
+      ],
+      isOpen: false,
+    },
+    {
+      title: "اعضا",
+      icon: <PeopleAltIcon />,
+      opt: [
+        { href: "", icon: <GroupWorkIcon />, title: "گروه های هاست" },
+        { href: "", icon: <CycloneIcon />, title: "نقش های کاربر" },
+        { href: "", icon: <SupervisedUserCircleIcon />, title: "اعضا" },
+        { href: "", icon: <ApiIcon />, title: "توکن API" },
+        { href: "", icon: <HowToRegIcon />, title: "احراز هویت" },
+
+      ],
+      isOpen: false,
+    },
+    {
+      title: "مدیریت",
+      icon: <AdminPanelSettingsIcon />,
+      opt: [
+        { href: "", icon: <PublicIcon />, title: "عمومی" },
+        { href: "", icon: <RequestQuoteIcon />, title: "گزارش حسابرسی" },
+        { href: "", icon: <DomainIcon />, title: "خانه داری" },
+        { href: "", icon: <CellTowerIcon />, title: "پروکسی ها" },
+        { href: "", icon: <WorkspacesIcon />, title: "ماکرو ها" },
+        { href: "", icon: <DynamicFeedIcon />, title: "صف" },
+      ],
+      isOpen: false,
+    },
+  ]);
+
+  const handleDropDownToggle = (index) => {
+    if (open) {
+      setDropDown((prevDropDown) => {
+        const updatedDropDown = prevDropDown.map((item, i) => {
+          return {
+            ...item,
+            isOpen: i === index ? !item.isOpen : false,
+          };
+        });
+        return updatedDropDown;
+      });
+    }
+
+  };
+
+  // const today = jMoment().locale('fa').day(1).format('dddd')
+
+  const handleClick = () => {
+    open && setIsDropDownOpen(!IsDropDownOpen);
+  };
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setDropDown((prevDropDown) => {
+      const updatedDropDown = prevDropDown.map((item) => {
+        return {
+          ...item,
+          isOpen: false,
+        };
+      });
+      return updatedDropDown;
+    });
+    setIsDropDownOpen(false);
+    setOpen(false);
+  };
+
+  const resize = () => {
+    setisFullScreen(!isFullScreen);
+    if (isFullScreen) {
+      document.webkitExitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  };
+
+  return (
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBar className="bg-mainBlue" position="fixed" open={open}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{
+              marginRight: 5,
+              ...(open && { display: "none" }),
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <div className="flex w-full justify-between">
+            <Typography variant="h6" noWrap component="div">
+              هاست ها
+            </Typography>
+            <div className="flex items-center gap-2">
+              {btn}
+              <img
+                onClick={resize}
+                src={`/Icons/${!isFullScreen ? "full-screen" : "arrow-resize"
+                  }.svg`}
+                className={`w-5 h-5 cursor-pointer duration-300 ${isFullScreen ? "hover:scale-[.85]" : "hover:scale-[1.20]"
+                  }`}
+                alt="full-screen"
+              />
+            </div>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        className="flex flex-col justify-between"
+        variant="permanent"
+        open={open}
+      >
+        <DrawerHeader className="bg-mainBlue">
+          <h1 className=" w-full text-center">خوش آمدید </h1>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
+          </IconButton>
+        </DrawerHeader>
+        <List
+          sx={{ width: "100%", maxWidth: 360 }}
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="داشبورد" />
+          </ListItemButton>
+          {DropDown.map((dd, index) => {
+            return (
+              <React.Fragment key={index}>
+                <ListItemButton className={dd.isOpen ? "bg-darkBlue/80 hover:bg-darkBlue" : ""} onClick={() => handleDropDownToggle(index)}>
+                  <ListItemIcon>{dd.icon}</ListItemIcon>
+                  <ListItemText primary={dd.title} />
+                  {dd.isOpen ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                {dd.opt.map((opts, index) => {
+                  return (
+                    <Collapse key={index} in={dd.isOpen} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                          <ListItemIcon>{opts.icon}</ListItemIcon>
+                          <ListItemText primary={opts.title} />
+                        </ListItemButton>
+                      </List>
+                    </Collapse>
+                  );
+                })}
+              </React.Fragment>
+            );
+          })}
+        </List>
+        <div className="mt-5">
+          <Divider className="bg-white" />
+          <ListItemButton onClick={handleClick}>
+            <ListItemIcon>
+              <HeadsetMicIcon />
+            </ListItemIcon>
+            <ListItemText primary="پشتیبانی" />
+          </ListItemButton>
+          <ListItemButton onClick={handleClick}>
+            <ListItemIcon>
+              <HelpIcon />
+            </ListItemIcon>
+            <ListItemText primary="راهنما" />
+          </ListItemButton>
+          <ListItemButton onClick={handleClick}>
+            <ListItemIcon>
+              <ManageAccountsIcon />
+            </ListItemIcon>
+            <ListItemText primary="پروفایل" />
+          </ListItemButton>
+          <ListItemButton>
+            <ListItemIcon>
+              <PowerSettingsNewIcon />
+            </ListItemIcon>
+            <ListItemText primary="خروج از اکانت" />
+          </ListItemButton>
+        </div>
+      </Drawer>
+      <Box component="main" className="w-[50%] p-5" sx={{ flexGrow: 1 }}>
+        <DrawerHeader />
+        {children}
+      </Box>
+    </Box>
+  );
+}
