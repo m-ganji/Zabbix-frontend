@@ -1,25 +1,24 @@
- 
-import clsx from 'clsx'
-import {Link} from 'react-router-dom'
-import {KTIcon, toAbsoluteUrl} from '../../../helpers'
-import {LayoutSetup, useLayout} from '../../core'
-import {Header} from './Header'
-import {Navbar} from './Navbar'
+import clsx from "clsx";
+import { Link } from "react-router-dom";
+import { KTIcon, toAbsoluteUrl } from "../../../helpers";
+import { LayoutSetup, useLayout } from "../../core";
+import { Header } from "./Header";
+import { Navbar } from "./Navbar";
 
 export function HeaderWrapper() {
-  const {config, classes} = useLayout()
-  if (config.app?.header?.default?.container === 'fluid') {
+  const { config, classes } = useLayout();
+  if (config.app?.header?.default?.container === "fluid") {
     LayoutSetup.classes.headerContainer.push("container-fluid");
   } else {
     LayoutSetup.classes.headerContainer.push("container-xxl");
   }
   if (!config.app?.header?.display) {
-    return null
+    return null;
   }
 
   return (
-    <div id='kt_app_header' className='app-header'>
-      <div
+    <div id="kt_app_header" className="app-header">
+      {/* <div
         id='kt_app_header_container'
         className={clsx(
           'app-container',
@@ -105,7 +104,7 @@ export function HeaderWrapper() {
             )}
           <Navbar />
         </div>
-      </div>
+      </div> */}
     </div>
-  )
+  );
 }

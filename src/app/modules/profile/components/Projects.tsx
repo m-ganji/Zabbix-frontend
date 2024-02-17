@@ -1,12 +1,13 @@
-import { Content } from '../../../../_metronic/layout/components/content'
-import {Card2} from '../../../../_metronic/partials/content/cards/Card2'
-import {IconUserModel} from '../ProfileModels'
+import { Content } from "../../../../_metronic/layout/components/content";
+import { Card2 } from "../../../../_metronic/partials/content/cards/Card2";
+import { IconUserModel } from "../ProfileModels";
 
 export function Projects() {
   return (
     <Content>
-      <div className='d-flex flex-wrap flex-stack mb-6'>
-        <h3 className='fw-bolder my-2'>
+      <div className="d-flex flex-wrap flex-stack mb-6">
+        مشکلات
+        {/* <h3 className='fw-bolder my-2'>
           My Projects
           <span className='fs-6 text-gray-500 fw-bold ms-1'>Active</span>
         </h3>
@@ -225,58 +226,58 @@ export function Projects() {
               <i className='next'></i>
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </Content>
-  )
+  );
 }
 
 const users1: Array<IconUserModel> = [
-  {name: 'Emma Smith', avatar: 'media/avatars/300-6.jpg'},
-  {name: 'Rudy Stone', avatar: 'media/avatars/300-1.jpg'},
-  {name: 'Susan Redwood', initials: 'S', color: 'primary'},
-]
+  { name: "Emma Smith", avatar: "media/avatars/300-6.jpg" },
+  { name: "Rudy Stone", avatar: "media/avatars/300-1.jpg" },
+  { name: "Susan Redwood", initials: "S", color: "primary" },
+];
 
 const users2 = [
-  {name: 'Alan Warden', initials: 'A', color: 'warning'},
-  {name: 'Brian Cox', avatar: 'media/avatars/300-5.jpg'},
-]
+  { name: "Alan Warden", initials: "A", color: "warning" },
+  { name: "Brian Cox", avatar: "media/avatars/300-5.jpg" },
+];
 
 const users3 = [
-  {name: 'Mad Masy', avatar: 'media/avatars/300-6.jpg'},
-  {name: 'Cris Willson', avatar: 'media/avatars/300-1.jpg'},
-  {name: 'Mike Garcie', initials: 'M', color: 'info'},
-]
+  { name: "Mad Masy", avatar: "media/avatars/300-6.jpg" },
+  { name: "Cris Willson", avatar: "media/avatars/300-1.jpg" },
+  { name: "Mike Garcie", initials: "M", color: "info" },
+];
 
 const users4 = [
-  {name: 'Nich Warden', initials: 'N', color: 'warning'},
-  {name: 'Rob Otto', initials: 'R', color: 'success'},
-]
+  { name: "Nich Warden", initials: "N", color: "warning" },
+  { name: "Rob Otto", initials: "R", color: "success" },
+];
 
 const users5 = [
-  {name: 'Francis Mitcham', avatar: 'media/avatars/300-20.jpg'},
-  {name: 'Michelle Swanston', avatar: 'media/avatars/300-7.jpg'},
-  {name: 'Susan Redwood', initials: 'S', color: 'primary'},
-]
+  { name: "Francis Mitcham", avatar: "media/avatars/300-20.jpg" },
+  { name: "Michelle Swanston", avatar: "media/avatars/300-7.jpg" },
+  { name: "Susan Redwood", initials: "S", color: "primary" },
+];
 
 const users6 = [
-  {name: 'Emma Smith', avatar: 'media/avatars/300-6.jpg'},
-  {name: 'Rudy Stone', avatar: 'media/avatars/300-1.jpg'},
-  {name: 'Susan Redwood', initials: 'S', color: 'primary'},
-]
+  { name: "Emma Smith", avatar: "media/avatars/300-6.jpg" },
+  { name: "Rudy Stone", avatar: "media/avatars/300-1.jpg" },
+  { name: "Susan Redwood", initials: "S", color: "primary" },
+];
 
 const users7 = [
-  {name: 'Meloday Macy', avatar: 'media/avatars/300-2.jpg'},
-  {name: 'Rabbin Watterman', initials: 'S', color: 'success'},
-]
+  { name: "Meloday Macy", avatar: "media/avatars/300-2.jpg" },
+  { name: "Rabbin Watterman", initials: "S", color: "success" },
+];
 
 const users8 = [
-  {name: 'Emma Smith', avatar: 'media/avatars/300-6.jpg'},
-  {name: 'Rudy Stone', avatar: 'media/avatars/300-1.jpg'},
-  {name: 'Susan Redwood', initials: 'S', color: 'primary'},
-]
+  { name: "Emma Smith", avatar: "media/avatars/300-6.jpg" },
+  { name: "Rudy Stone", avatar: "media/avatars/300-1.jpg" },
+  { name: "Susan Redwood", initials: "S", color: "primary" },
+];
 
 const users9 = [
-  {name: 'Meloday Macy', avatar: 'media/avatars/300-2.jpg'},
-  {name: 'Rabbin Watterman', initials: 'S', color: 'danger'},
-]
+  { name: "Meloday Macy", avatar: "media/avatars/300-2.jpg" },
+  { name: "Rabbin Watterman", initials: "S", color: "danger" },
+];

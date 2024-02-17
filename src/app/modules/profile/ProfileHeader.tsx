@@ -1,19 +1,18 @@
-
-import { FC } from 'react'
-import {KTIcon, toAbsoluteUrl} from '../../../_metronic/helpers'
-import {Link, useLocation} from 'react-router-dom'
-import {Dropdown1} from '../../../_metronic/partials'
-import { ToolbarWrapper } from '../../../_metronic/layout/components/toolbar'
-import { Content } from '../../../_metronic/layout/components/content'
+import { FC } from "react";
+import { KTIcon, toAbsoluteUrl } from "../../../_metronic/helpers";
+import { Link, useLocation } from "react-router-dom";
+import { Dropdown1 } from "../../../_metronic/partials";
+import { ToolbarWrapper } from "../../../_metronic/layout/components/toolbar";
+import { Content } from "../../../_metronic/layout/components/content";
 
 const ProfileHeader: FC = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <>
-      <ToolbarWrapper />
-      <Content>
-        <div className='card mb-5 mb-xl-10'>
+      {/* <ToolbarWrapper /> */}
+      {/* <Content> */}
+      {/* <div className='card mb-5 mb-xl-10'>
           <div className='card-body pt-9 pb-0'>
             <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
               <div className='me-7 mb-4'>
@@ -201,10 +200,10 @@ const ProfileHeader: FC = () => {
               </ul>
             </div>
           </div>
-        </div>
-      </Content>
+        </div> */}
+      {/* </Content> */}
     </>
-  )
-}
+  );
+};
 
-export {ProfileHeader}
+export { ProfileHeader };
